@@ -2,10 +2,10 @@ from PIL import Image, ImageFont, ImageDraw  # Importing the necessary modules
 from config import *  # This file Contains the API Keys and other sensitive information
 
 
-async def create_image(price):
+def create_image(price):
     my_image = Image.open("btc.png")  # Opening File
     title_font = ImageFont.truetype("./Montserrat-ExtraBold.ttf", 220, encoding="unic")
-    price = str(price)
+    price = "$" + str(price)
     image_editable = ImageDraw.Draw(my_image)  # Creating a draw object
     width, height = my_image.size
     textW, textH = image_editable.textsize(price, font=title_font)
@@ -17,3 +17,6 @@ async def create_image(price):
     )
     my_image.save("res.png")  # Saving the image
     return True
+
+
+create_image(123)
